@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce Website | Account</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div cass="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images/logo.png" width="200px" />
+                </div>
+                <nav>
+                    <ul id="menuItems">
+                        <li>
+                            <a href="index.html">Home</a>
+                            <a href="products.html">Product</a>
+                            <a href="#footer">Contact</a>
+                            <a href="account.html">Account</a>
+                        </li>
+                    </ul>
+                </nav>
+                <i class="fas fa-bars menu-icon" onclick="menuToggle()"></i>
+            </div>
+        </div>
+    </div>
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <img src="images/image1.png" width="100%">
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="indicator">
+                        </div>
+                        <form id="login-form">
+                            <input type="text" placeholder="Username" required>
+                            <input type="password" placeholder="Password" required>
+                            <button type="submit" class="btn">Login</button>
+                            <a href="">Forgot Password</a>
+                        </form>
+                        <form id="reg-form" name="submit-google-sheet" method="POST" onsubmit="return validation()">
+                            <input id="username" name="Name" type="text" placeholder="Name" required>
+                            <input id="email" name="Email" type="email" placeholder="Email" required>
+                            <input id="password" name="Password" type="password" placeholder="Password" required>
+                            <input id="number" name="Contact Number" type="text" placeholder="Contact Number" required>
+                            <button type="submit" class="btn">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--FOOTER-->
+    <div class="footer" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>Download our App</h3>
+                    <p>Download App for Android and iOS</p>
+                    <div class="app-logo">
+                        <img src="images/play-store.png">
+                        <img src="images/app-store.png">
+                    </div>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/logo-white.png">
+                    <p>Our purpose is to Sustainably make the pleasure and benefits of Sports Accessible to the many.
+                    </p>
+                </div>
+                <div class="footer-col-3">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+                <div class="footer-col-4">
+                    <h3>Follow us on Social Media</h3>
+                    <ul>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
+                        <li>Youtube</li>
+                        <li>Twitter</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <p class="copyright">Copyright 2021 - DGTech Corp.</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var menuItems = document.getElementById("menuItems");
+        menuItems.style.maxHeight = "0px";
+
+        function menuToggle() {
+            if (menuItems.style.maxHeight == "0px") {
+                menuItems.style.maxHeight = "200px";
+            } else {
+                menuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        var loginForm = document.getElementById("login-form");
+        var regForm = document.getElementById("reg-form");
+        var indicator = document.getElementById("indicator");
+
+        function register() {
+            regForm.style.transform = "translateX(0px)";
+            loginForm.style.transform = "translateX(0px)";
+            indicator.style.transform = "translateX(100px)";
+        }
+
+        function login() {
+            regForm.style.transform = "translateX(300px)";
+            loginForm.style.transform = "translateX(300px)";
+            indicator.style.transform = "translateX(0px)";
+        }
+    </script>
+    <script type="text/javascript">
+        function validation() {
+            var email = document.getElementById('email').value;
+            var number = document.getElementById('number').value;
+            var emailcheck = /^[A-Za-z_0-9.]{3,}@[A-Za-z]{3,}[.]{1}[A-Za-z.]{2,6}$/;
+            var numbercheck = /^[6789][0-9]{9}$/;
+            if (emailcheck.test(email)) {
+                console.log("Data Entry Successful");
+            }
+            else {
+                alert("Invalid Email");
+                return false;
+            }
+            if (numbercheck.test(number)) {
+                console.log("Data Entry Successful");
+            }
+            else {
+                alert("Invalid Number");
+                return false;
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw68R-9nnekJCq4jFs54BuoXskp42-abUB-uYzJeE4-LK3jIVvdjjQkr6S8cC9OB-mA/exec'
+        const form = document.forms['submit-google-sheet']
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thanks for registering with us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+        });
+    </script>
+</body>
+
+</html>
